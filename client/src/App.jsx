@@ -28,15 +28,27 @@ const initialTodos = [
 function App() {
   const [todos, setTodos] = useState(initialTodos);
   return (
+    // <div
+    //   className="App"
+    //   style={{
+    //     display: "flex",
+    //     justifyContent: "center",
+    //     alignItems: "center",
+    //     background: "#032464ff",
+    //     height: "100vh",
+    //     direction: "rtl",
+    //   }}
+    // >
     <div
       className="App"
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "#032464ff",
         height: "100vh",
         direction: "rtl",
+        backgroundImage: "linear-gradient(135deg, #667eea, #764ba2)",
+        transition: "background-image 0.8s ease-in-out",
       }}
     >
       <TodosContext.Provider value={{ todos, setTodos }}>

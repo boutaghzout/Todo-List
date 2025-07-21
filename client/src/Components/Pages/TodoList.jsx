@@ -49,7 +49,7 @@ export default function TodoList() {
 
   useEffect(() => {
     console.log("hello");
-    const storageTodos = JSON.parse(localStorage.getItem("todos"));
+    const storageTodos = JSON.parse(localStorage.getItem("todos"))??[];
     setTodos(storageTodos);
   }, []);
   function changeDisplayedType(e) {
@@ -90,9 +90,60 @@ export default function TodoList() {
             aria-label="text alignment"
             value={displayedTodosType}
           >
-            <ToggleButton value="all">Tous</ToggleButton>
-            <ToggleButton value="completed">Fait</ToggleButton>
-            <ToggleButton value="non-completed">Non Fait</ToggleButton>
+            
+            <ToggleButton
+              value="all"
+              sx={{
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "#e0e0e0",
+                  transform: "scale(1.05)",
+                },
+                "&.Mui-selected": {
+                  backgroundColor: "#4e54c8",
+                  color: "#fff",
+                  transform: "scale(1.1)",
+                },
+              }}
+            >
+              Tous
+            </ToggleButton>
+
+            <ToggleButton
+              value="completed"
+              sx={{
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "#d0ffd6",
+                  transform: "scale(1.05)",
+                },
+                "&.Mui-selected": {
+                  backgroundColor: "#43a047",
+                  color: "#fff",
+                  transform: "scale(1.1)",
+                },
+              }}
+            >
+              Fait
+            </ToggleButton>
+
+            <ToggleButton
+              value="non-completed"
+              sx={{
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "#ffe0e0",
+                  transform: "scale(1.05)",
+                },
+                "&.Mui-selected": {
+                  backgroundColor: "#e53935",
+                  color: "#fff",
+                  transform: "scale(1.1)",
+                },
+              }}
+            >
+              Non Fait
+            </ToggleButton>
           </ToggleButtonGroup>
           {/* Fin */}
           {/* All Todos */}
@@ -116,7 +167,7 @@ export default function TodoList() {
                 onClick={() => {
                   handleAddClick();
                 }}
-                disabled={titleInput.length==0}
+                disabled={titleInput.length == 0}
               >
                 Add
               </Button>
@@ -141,7 +192,6 @@ export default function TodoList() {
           </Grid>
           {/* grid fin */}
         </CardContent>
-        
       </Card>
     </Container>
   );
